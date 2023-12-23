@@ -42,6 +42,10 @@ const regencySlice = createSlice({
         },
         setData(state, action) {
             state.data = action.payload
+        },
+        reset(state) {
+            state.selected = 0;
+            state.data = [];
         }
     }
 })
@@ -55,6 +59,10 @@ const districtSlice = createSlice({
         },
         setData(state, action) {
             state.data = action.payload
+        },
+        reset(state) {
+            state.selected = 0;
+            state.data = [];
         }
     }
 })
@@ -68,6 +76,10 @@ const villageSlice = createSlice({
         },
         setData(state, action) {
             state.data = action.payload
+        },
+        reset(state) {
+            state.selected = 0;
+            state.data = [];
         }
     }
 })

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './index.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { provinceActions, regencyActions, districtActions, villageActions } from '../../store';
@@ -21,20 +21,20 @@ const TestSelect = () => {
 
     useEffect(()=>{
         getRegencies(selectedProvince)
-        dispatch(regencyActions.setData([]))
-        dispatch(districtActions.setData([]))
-        dispatch(villageActions.setData([]))
+        dispatch(regencyActions.reset())
+        dispatch(districtActions.reset())
+        dispatch(villageActions.reset())
     }, [selectedProvince])
 
     useEffect(()=>{
         getDistricts(selectedRegency)
-        dispatch(districtActions.setData([]))
-        dispatch(villageActions.setData([]))
+        dispatch(districtActions.reset())
+        dispatch(villageActions.reset())
     }, [selectedRegency])
 
     useEffect(()=>{
         getVillages(selectedDistrict)
-        dispatch(villageActions.setData([]))
+        dispatch(villageActions.reset())
     }, [selectedDistrict])
 
     const getProvinces = () => {
@@ -93,37 +93,37 @@ const TestSelect = () => {
         <div className='container mt-5'>
             <div className='row'>
                 <p className='m-0'>Pilih Provinsi</p>
-                <select class="custom-select mb-3" onChange={(e) => selectProvinceHandler(e)}>
-                    <option selected>--pilih provinsi--</option>
+                <select className="custom-select mb-3" onChange={(e) => selectProvinceHandler(e)} selected={selectedProvince}>
+                    <option value={0}>--pilih provinsi--</option>
                     {
-                        provinces.length !== 0 && provinces.map(item => <option value={item.id}>{item.name}</option>)
+                        provinces.length !== 0 && provinces.map(item => <option key={`prov${item.id}`} value={item.id}>{item.name}</option>)
                     }
                 </select>
             </div>
             <div className='row'>
                 <p className='m-0'>Pilih Kabupaten/Kota</p>
-                <select class="custom-select mb-3" onChange={(e) => selectRegencyHandler(e)}>
-                    <option selected>--pilih kab/kota--</option>
+                <select className="custom-select mb-3" onChange={(e) => selectRegencyHandler(e)} selected={selectedRegency}>
+                    <option value={0}>--pilih kab/kota--</option>
                     {
-                        regencies.length !== 0 && regencies.map(item => <option value={item.id}>{item.name}</option>)
+                        regencies.length !== 0 && regencies.map(item => <option key={`reg${item.id}`} value={item.id}>{item.name}</option>)
                     }
                 </select>
             </div>
             <div className='row'>
                 <p className='m-0'>Pilih Kecamatan</p>
-                <select class="custom-select mb-3" onChange={(e) => selectDistrictHandler(e)}>
-                    <option selected>--pilih kecamatan--</option>
+                <select className="custom-select mb-3" onChange={(e) => selectDistrictHandler(e)} selected={selectedDistrict}>
+                    <option value={0}>--pilih kecamatan--</option>
                     {
-                        districts.length !== 0 && districts.map(item => <option value={item.id}>{item.name}</option>)
+                        districts.length !== 0 && districts.map(item => <option key={`dist${item.id}`} value={item.id}>{item.name}</option>)
                     }
                 </select>
             </div>
             <div className='row'>
                 <p className='m-0'>Pilih Desa</p>
-                <select class="custom-select mb-3" onChange={(e) => selectVillageHandler(e)}>
-                    <option selected>--pilih desa--</option>
+                <select className="custom-select mb-3" onChange={(e) => selectVillageHandler(e)} selected={selectedVillage}>
+                    <option value={0}>--pilih desa--</option>
                     {
-                        villages.length !== 0 && villages.map(item => <option value={item.id}>{item.name}</option>)
+                        villages.length !== 0 && villages.map(item => <option key={`vill${item.id}`} value={item.id}>{item.name}</option>)
                     }
                 </select>
             </div>
