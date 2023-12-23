@@ -5,7 +5,7 @@ const TestFlex = () => {
     return (
         <div className='container mt-5'>
             <div className='d-flex flex-column flex-sm-column flex-md-column flex-lg-row' >
-                <div className=''>
+                <div className='d-flex flex-row'>
                     <button type="button" className="btn btn-primary">Tambah</button>
                     <button type="button" className="btn btn-primary">Import</button>
                     <button type="button" className="btn btn-primary">Export</button>
@@ -23,12 +23,6 @@ const TestFlex = () => {
                         </div>
                     </div>
                 </div>
-
-            </div>
-            <div className='d-flex flex-row'>
-            </div>
-            <div className='d-flex flex-row'>
-
             </div>
         </div>
 
